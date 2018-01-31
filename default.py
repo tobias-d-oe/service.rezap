@@ -172,8 +172,17 @@ class MyPlayer(xbmc.Player):
       ChannelID=get_player_channel_id(CurrentPlayer)
       message="Rezapping in Progress Player: %s Type: %s ChannelID: %s" % (CurrentPlayer,PlayerType,ChannelID['id'])
       RezapCurrent=WINDOW.getProperty('ReZap.Current')
-      WINDOW.setProperty('ReZap.Last', str(RezapCurrent))
+      RezapLast=WINDOW.getProperty('ReZap.Last.1')
+      RezapLast2=WINDOW.getProperty('ReZap.Last.2')
+      RezapLast3=WINDOW.getProperty('ReZap.Last.3')
+      RezapLast4=WINDOW.getProperty('ReZap.Last.4')
+      RezapLast5=WINDOW.getProperty('ReZap.Last.5')
+      WINDOW.setProperty('ReZap.Last.1', str(RezapCurrent))
       WINDOW.setProperty('ReZap.Current',str(ChannelID['id']))
+      WINDOW.setProperty('ReZap.Last.2', str(RezapLast))
+      WINDOW.setProperty('ReZap.Last.3', str(RezapLast2))
+      WINDOW.setProperty('ReZap.Last.4', str(RezapLast3))
+      WINDOW.setProperty('ReZap.Last.5', str(RezapLast4))
       writeLog(message, level=xbmc.LOGNOTICE)
 
 if (__name__ == "__main__"):

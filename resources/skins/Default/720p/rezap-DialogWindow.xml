@@ -1,0 +1,236 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<window type="dialog" id="4711817">
+        <defaultcontrol always="true">333333</defaultcontrol> 
+        <include>dialogeffect</include>
+        <depth>DepthDialog+</depth>
+        <controls>
+		
+	<control type="group">
+			<left>235</left>
+			<top>75</top>
+			<animation effect="slide" start="0,0" end="0,46" time="0" condition="[Control.IsVisible(333333) + !Integer.IsGreater(Container(3).NumItems,4)] | [Control.IsVisible(6) + !Integer.IsGreater(Container(6).NumItems,2)]">Conditional</animation>
+			<animation effect="slide" start="0,0" end="0,46" time="0" condition="[Control.IsVisible(333333) + !Integer.IsGreater(Container(3).NumItems,6)] | [Control.IsVisible(6) + !Integer.IsGreater(Container(6).NumItems,3)]">Conditional</animation>
+			<animation effect="slide" start="0,0" end="0,46" time="0" condition="[Control.IsVisible(333333) + !Integer.IsGreater(Container(3).NumItems,8)] | [Control.IsVisible(6) + !Integer.IsGreater(Container(6).NumItems,4)]">Conditional</animation>
+			<control type="image">
+				<description>background image</description>
+				<left>0</left>
+				<top>0</top>
+				<width>850</width>
+				<height>550</height>
+				<texture border="40">$VAR[SelectBack]</texture>
+				<visible>[Control.IsVisible(333333) + Integer.IsGreater(Container(333333).NumItems,8)] | [Control.IsVisible(6) + Integer.IsGreater(Container(6).NumItems,4)]</visible>
+			</control>
+			<control type="image">
+				<description>background image</description>
+				<left>0</left>
+				<top>0</top>
+				<width>850</width>
+				<height>458</height>
+				<texture border="40">$VAR[SelectBack]</texture>
+				<visible>[Control.IsVisible(333333) + Integer.IsGreater(Container(333333).NumItems,6) + !Integer.IsGreater(Container(333333).NumItems,8)] | [Control.IsVisible(6) + Integer.IsGreater(Container(6).NumItems,3) + !Integer.IsGreater(Container(6).NumItems,4)]</visible>
+			</control>
+			<control type="image">
+				<description>background image</description>
+				<left>0</left>
+				<top>0</top>
+				<width>850</width>
+				<height>366</height>
+				<texture border="40">$VAR[SelectBack]</texture>
+				<visible>[Control.IsVisible(333333) + Integer.IsGreater(Container(333333).NumItems,4) + !Integer.IsGreater(Container(3).NumItems,6)] | [Control.IsVisible(6) + Integer.IsGreater(Container(6).NumItems,2) + !Integer.IsGreater(Container(6).NumItems,3)]</visible>
+			</control>
+			<control type="image">
+				<description>background image</description>
+				<left>0</left>
+				<top>0</top>
+				<width>850</width>
+				<height>274</height>
+				<texture border="40">$VAR[SelectBack]</texture>
+				<visible>[Control.IsVisible(333333) + !Integer.IsGreater(Container(333333).NumItems,4)] | [Control.IsVisible(6) + !Integer.IsGreater(Container(6).NumItems,2)]</visible>
+			</control>
+			<control type="image">
+				<description>Dialog Header image</description>
+				<left>40</left>
+				<top>16</top>
+				<width>770</width>
+				<height>40</height>
+				<texture>dialogheader.png</texture>
+			</control>
+			<control type="label" id="1">
+				<description>header label</description>
+				<left>40</left>
+				<top>20</top>
+				<width>770</width>
+				<height>30</height>
+				<font>font13_title</font>
+				<label>PVR Extended ReZap</label>
+				<align>center</align>
+				<aligny>center</aligny>
+				<textcolor>selected</textcolor>
+				<shadowcolor>black</shadowcolor>
+			</control>
+			<control type="label" id="4">
+				<description>No Settings Label</description>
+				<left>20</left>
+				<top>120</top>
+				<width>550</width>
+				<align>center</align>
+				<font>font13</font>
+			</control>
+			<control type="button">
+				<description>Close Window button</description>
+				<left>760</left>
+				<top>15</top>
+				<width>64</width>
+				<height>32</height>
+				<label/>
+				<font/>
+				<onclick>PreviousMenu</onclick>
+				<texturefocus>DialogCloseButton-focus.png</texturefocus>
+				<texturenofocus>DialogCloseButton.png</texturenofocus>
+				<visible>system.getbool(input.enablemouse)</visible>
+			</control>
+
+			<control type="list" id="333333">
+				<left>20</left>
+				<top>67</top>
+				<width>750</width>
+				<height>460</height>
+				<onup>3</onup>
+				<ondown>3</ondown>
+				<onleft>7</onleft>
+				<onright>7</onright>
+				<pagecontrol>61</pagecontrol>
+				<scrolltime>200</scrolltime>
+<onclick>PreviousMenu</onclick>
+<onclick>RunScript(service.rezap, "?methode=zap&num=$INFO[ListItem.Property("PVRID")]")</onclick>
+
+				<itemlayout height="46" width="550">
+					<control type="image">
+						<left>80</left>
+						<top>5</top>
+						<width>30</width>
+						<height>30</height>
+                                                <usecontrolcoords>true</usecontrolcoords>
+						<aspectratio>scale</aspectratio>
+						<texture border="5">$INFO[ListItem.Icon]</texture>
+						<visible>Control.HasFocus(333333)</visible>
+						<include>VisibleFadeEffect</include>
+					</control>
+
+
+					<control type="image">
+						<left>0</left>
+						<top>0</top>
+						<width>550</width>
+						<height>40</height>
+						<texture border="5">button-nofocus.png</texture>
+					</control>
+					<control type="label">
+						<left>20</left>
+						<top>0</top>
+						<width>510</width>
+						<height>40</height>
+						<font>font13</font>
+						<textcolor>grey2</textcolor>
+						<selectedcolor>selected</selectedcolor>
+						<align>left</align>
+						<aligny>center</aligny>
+						<label>$INFO[ListItem.Label]</label>
+					</control>
+					<control type="label">
+						<left>120</left>
+						<top>0</top>
+						<width>510</width>
+						<height>40</height>
+						<font>font13</font>
+						<textcolor>grey2</textcolor>
+						<selectedcolor>selected</selectedcolor>
+						<align>left</align>
+						<aligny>center</aligny>
+						<label>$INFO[ListItem.Label2]</label>
+					</control>
+
+				</itemlayout>
+				<focusedlayout height="46" width="750">
+					<control type="image">
+						<left>80</left>
+						<top>5</top>
+						<width>30</width>
+						<height>30</height>
+                                                <usecontrolcoords>true</usecontrolcoords>
+						<aspectratio>scale</aspectratio>
+						<texture border="5">$INFO[ListItem.Icon]</texture>
+						<visible>Control.HasFocus(333333)</visible>
+						<include>VisibleFadeEffect</include>
+					</control>
+
+
+					<control type="image">
+						<left>0</left>
+						<top>0</top>
+						<width>550</width>
+						<height>40</height>
+						<texture border="5">button-nofocus.png</texture>
+						<visible>!Control.HasFocus(333333)</visible>
+						<include>VisibleFadeEffect</include>
+					</control>
+					<control type="image">
+						<left>0</left>
+						<top>0</top>
+						<width>550</width>
+						<height>40</height>
+						<texture border="5">button-focus2.png</texture>
+						<visible>Control.HasFocus(333333)</visible>
+						<include>VisibleFadeEffect</include>
+					</control>
+					<control type="label">
+						<left>20</left>
+						<top>0</top>
+						<width>510</width>
+						<height>40</height>
+						<font>font13</font>
+						<textcolor>white</textcolor>
+						<selectedcolor>selected</selectedcolor>
+						<align>left</align>
+						<aligny>center</aligny>
+						<label>$INFO[ListItem.Label]</label>
+					</control>
+					<control type="label">
+						<left>120</left>
+						<top>0</top>
+						<width>510</width>
+						<height>40</height>
+						<font>font13</font>
+						<textcolor>grey2</textcolor>
+						<selectedcolor>selected</selectedcolor>
+						<align>left</align>
+						<aligny>center</aligny>
+						<label>$INFO[ListItem.Label2]</label>
+					</control>
+
+				</focusedlayout>
+			<content>plugin://service.rezap?methode=get_container</content>
+
+			</control>
+                                        <control type="button" id="7">
+                                                <description>Cancel button</description>
+                                                <width>200</width>
+                                                <height>40</height>
+						<left>612</left>
+						<top>100</top>
+                                                <label>Schließen</label>
+                                                <font>font12_title</font>
+                                                <textcolor>white</textcolor>
+                                                <focusedcolor>white</focusedcolor>
+                                                <align>center</align>
+						<onclick>PreviousMenu</onclick>
+						<onleft>333333</onleft>
+						<onright>333333</onright>
+                                        </control>
+
+
+
+		</control>
+        </controls>
+</window>
+
